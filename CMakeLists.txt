@@ -1,12 +1,12 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.5)
 
-project(myprog)
+project(user 
+	VERSION 1.0.0
+	DESCRIPTION "Template for C++ library built with CMake"
+	LANGUAGES CXX)
 
-file(GLOB 
-	CPP_SRC "src/*.cpp")
+add_library(${PROJECT_NAME})
+add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
-# add_library(${PROJECT_NAME} STATIC ${_LIB})
-
-add_executable(${PROJECT_NAME}.exe ${CPP_SRC})
-
-target_link_libraries(${PROJECT_NAME}.exe {PROJECT_NAME})
+string(COMPARE EQUAL "${CMAKE_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}"
+	is_top_level)
